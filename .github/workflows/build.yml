@@ -1,0 +1,22 @@
+on:
+  push:
+    branches: [ 'main' ]
+
+jobs:
+  publish:
+    name: Publish Release
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Release
+        uses: docker://antonyurchenko/git-release:v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_NAME: latest-snapshot
+          PRE_RELEASE: true
+          UNRELEASED: update
+          UNRELEASED_TAG: latest-snapshot
+          DRAFT_RELEASE: false
+          ALLOW_EMPTY_CHANGELOG: true
