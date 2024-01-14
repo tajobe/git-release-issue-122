@@ -4,6 +4,7 @@
 
 ### Added
 
+- Another CHANGELOG entry
 - A CHANGELOG entry
 - Initial release
 
